@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 import IsEmail from "isemail";
 
+import { hashPassword } from '../utils/passwordManagement';
+
 const customerSchema = new mongoose.Schema({
     firstName: {
         type: String,
@@ -25,6 +27,13 @@ const customerSchema = new mongoose.Schema({
         type: String,
         required: true,
         min: [8, "Password must be at least 8 characters long"]
+    }
+})
+
+customerSchema.pre("save", async function () {
+    const hashedPassword = await hashPassword(this.password);
+    if(hashedPassword) {
+        this.password = hashedPassword;
     }
 })
 
