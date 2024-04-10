@@ -3,6 +3,13 @@ import IsEmail from "isemail";
 
 import { hashPassword } from '../utils/passwordManagement';
 
+const customerOrderSchema = new mongoose.Schema({
+    orderId: {
+        type: String,
+        unique: true,
+    }
+})
+
 const customerSchema = new mongoose.Schema({
     firstName: {
         type: String,
@@ -27,6 +34,10 @@ const customerSchema = new mongoose.Schema({
         type: String,
         required: true,
         min: [8, "Password must be at least 8 characters long"]
+    },
+    orders: {
+        type: [customerOrderSchema],
+        default: []
     }
 })
 
