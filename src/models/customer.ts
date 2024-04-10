@@ -38,7 +38,7 @@ const customerSchema = new mongoose.Schema({
   },
   orders: {
     type: [customerOrderSchema],
-    default: []  },
+    default: undefined  },
 });
 
 customerSchema.pre("save", async function () {

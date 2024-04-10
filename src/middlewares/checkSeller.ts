@@ -3,7 +3,7 @@ import express, { NextFunction, Request, Response } from "express";
 import Seller from "../models/seller";
 import Product from "../models/product";
 
-export const checkSellerHeader = async function (
+export default async function (
   req: Request,
   res: Response,
   next: NextFunction
@@ -31,25 +31,3 @@ export const checkSellerHeader = async function (
     res.status(500).json({ error: err.message });
   }
 };
-
-export default async function checkSeller(
-  req: Request,
-  res: Response,
-  next: NextFunction
-) {
-  try {
-    const sellerId = req.body.sellerId;
-
-    if (!sellerId) throw new Error("Seller ID is required");
-
-    const seller = await Seller.findOne({ sellerId }).exec();
-
-    if (!seller) throw new Error("Seller not found");
-
-    next();
-  } catch (err: any) {
-    return res.status(500).json({
-      message: err.message,
-    });
-  }
-}

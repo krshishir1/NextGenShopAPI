@@ -19,7 +19,7 @@ export default async function (
       if (!customer) throw new Error("Customer not found");
 
       if(orderId) {
-        const order = await Order.findOne({ orderId, email: customerEmail }).exec();
+        const order = await Order.findOne({ orderId, customerInfo: customerEmail }).exec();
 
         if(!order) throw new Error("Invalid customer email");
       }

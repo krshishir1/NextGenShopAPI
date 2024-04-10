@@ -2,7 +2,7 @@ import express, { Express, Request, Response } from "express";
 import mongoose from "mongoose";
 import 'dotenv/config'
 
-import userRouter from "./routes/users";
+import customerRouter from "./routes/customers";
 import productRouter from "./routes/products";
 import orderRouter from "./routes/orders"
 import sellerRouter from "./routes/sellers";
@@ -16,7 +16,7 @@ app.get("/", (req: Request, res: Response) => {
   res.send("Express + TypeScript Server");
 });
 
-app.use("/auth/customers", userRouter);
+app.use("/auth/customers", customerRouter);
 app.use("/auth/sellers", sellerRouter);
 app.use("/api/products", productRouter)
 app.use("/api/orders", orderRouter)
