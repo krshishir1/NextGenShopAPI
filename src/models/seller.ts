@@ -6,18 +6,15 @@ import { hashPassword } from "../utils/passwordManagement";
 const productSchema = new mongoose.Schema({
     productId: {
         type: String,
-        unique: true
     }
 })
+
+productSchema.set("autoIndex", false);
 
 export const sellerSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
-    },
-    sellerId: {
-        type: String,
-        unique: true,
     },
     email: {
         type: String,
@@ -29,6 +26,10 @@ export const sellerSchema = new mongoose.Schema({
             },
             message: (props: any) => `${props.value} is not a valid email address`
         }
+    },
+    sellerId: {
+        type: String,
+        unique: true,
     },
     password: {
         type: String,

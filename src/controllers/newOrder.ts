@@ -16,11 +16,8 @@ export default async (req: Request, res: Response) => {
     });
 
     const schema = Joi.object({
-      products: Joi.array().items(productOrderSchema).min(1),
+      products: Joi.array().items(productOrderSchema),
       customerInfo: Joi.string().email().required(),
-      status: Joi.string()
-        .valid("pending", "completed", "cancelled")
-        .required(),
     });
 
     const { error } = schema.validate(req.body);
@@ -37,10 +34,6 @@ export default async (req: Request, res: Response) => {
       const product: any = await Product.findOne({ productId }).exec();
       totalPrice += product.price * quantity;
 
-      Product.updateOne(
-        { productId },
-        { $inc: { inventoryCount: -quantity } }
-      ).exec();
     }
 
     const newOrderId = uuidv4();
@@ -54,7 +47,7 @@ export default async (req: Request, res: Response) => {
       orderId: newOrderId,
       products,
       customerInfo,
-      status,
+      status: "pending",
     });
 
     await newOrder.save();
