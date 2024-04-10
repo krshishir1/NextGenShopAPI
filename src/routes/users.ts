@@ -6,7 +6,7 @@ import loginCustomer from "../controllers/loginCustomer";
 const router = express.Router();
 
 // Registering a new user
-router.post("/customers/register", registerCustomer)
-router.post("/customers/login", loginCustomer)
+router.post("/register", registerCustomer)
+router.post("/login", loginCustomer)
 
 export default router;
