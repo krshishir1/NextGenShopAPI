@@ -14,6 +14,32 @@ This project aims to connect sellers with customers in an interactive and secure
 7. UUID (for creating secure IDs)
 8. Nodemon (for development)
 
+## Setting up the project.
+
+1. Clone the project
+```shell
+    git clone https://github.com/krshishir1/NextGenShopAPI.git
+    cd NextGenShopAPI/
+    npm install
+```
+
+2. Setup environment variables
+```shell
+    mv .env.example .env 
+```
+
+3. Add required details in the .env file. You will require MongoDB uri which can be accessed from MongoDB Atlas.
+
+4. Running the project
+```javascript
+    // starts nodemon development server
+    npm run dev
+
+    // creates dist folder (for production)
+    npm run build
+    npm run start
+```
+
 ## What does the API do?
 
 The API provides a platform with the following functionalities:
