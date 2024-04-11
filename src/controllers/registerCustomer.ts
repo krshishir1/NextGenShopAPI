@@ -3,6 +3,10 @@ import express, { Request, Response } from "express";
 import Joi from "joi";
 import Customer from "../models/customer"
 
+/* 
+  This controller is responsible for registering a customer.
+  It accepts the customer's first name, last name, email, and password and registers the customer.
+*/
 const registerCustomer = async (req: Request, res: Response) => {
   try {
     const schema = Joi.object({

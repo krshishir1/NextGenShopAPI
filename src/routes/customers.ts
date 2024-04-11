@@ -55,6 +55,7 @@ router.get("/get-account", checkCustomer, manageCustomer.GET_INFO);
         "firstName": "John",
         "lastName": "Donut",
     }
+    Usage: Update customer info
 */
 router.put("/update", checkCustomer, manageCustomer.UPDATE_INFO);
 
@@ -65,6 +66,7 @@ router.put("/update", checkCustomer, manageCustomer.UPDATE_INFO);
     {
         "password": "<new-password>"
     }
+    Usage: Change customer password
 */
 router.patch("/change-password", checkCustomer, manageCustomer.CHANGE_PASSWORD);
 

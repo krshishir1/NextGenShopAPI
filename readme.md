@@ -27,6 +27,7 @@ The API provides a platform with the following functionalities:
 ### Management of seller information
 This API endpoint comprises of registration, login, update, deletion and altering the password of a new seller.
 
+##### Registration and Login
 ```javascript
   POST /api/sellers/register
   Content-Type: application/json
@@ -36,9 +37,7 @@ This API endpoint comprises of registration, login, update, deletion and alterin
       "password": "<password>"
   }
   Usage: Signs up a new seller
-```
 
-```javascript
   POST /api/sellers/login
   Content-Type: application/json
   {
@@ -48,6 +47,27 @@ This API endpoint comprises of registration, login, update, deletion and alterin
   Usage: Login a seller
 ```
 
+##### Updating seller information
+```javascript
+    PUT /api/sellers/update
+    Authorization <sellerId>
+    Content-Type: application/json
+    {
+        name: "Raymonds",
+        email: "about@raymonds.com"
+    },
+    Usage: Update seller info
+
+    PATCH /api/sellers/change-password
+    Authorization <sellerId>
+    Content-Type: application/json
+    {
+        password: "<new-password>"
+    },
+    Usage: Change seller password
+```
+
+##### Other methods
 ```javascript
   DELETE /api/sellers/delete-account
   Authorization <sellerId>
@@ -64,6 +84,7 @@ This API endpoint comprises of registration, login, update, deletion and alterin
 ### Product Management
 This API comprises of endpoints for creation, update and deletion of products. Only a valid seller can create products.
 
+##### Creating new product
 ```javascript
     POST /api/products/new
     Authorization <sellerId>
@@ -79,6 +100,7 @@ This API comprises of endpoints for creation, update and deletion of products. O
     Usage: Create a new product
 ```
 
+##### Updating an existing product
 ```javascript
     PUT /api/products/:productId
     Authorization <sellerId>
@@ -91,7 +113,11 @@ This API comprises of endpoints for creation, update and deletion of products. O
         "inventoryCount": 95
     }
     Usage: Update a product by its id
+```
 
+##### Deleting and accessing products
+
+```javascript
     DELETE /api/products/:productId
     Authorization <sellerId>
     Usage: Delete a product by its id
@@ -105,7 +131,7 @@ This API comprises of endpoints for creation, update and deletion of products. O
     Usage: Get all products of a seller
 ```
 
-Filtering products by price and category
+##### Filtering products by price and category
 ```javascript
     GET /api/products/filter/price?maxPrice=1000&minPrice=500
     Usage: Filter products by price
@@ -122,16 +148,23 @@ Filtering products by price and category
         "name": "Electronics",
         "description": "All electronic items"
     }
-    
     Usage: Create a new category and stores it in catogories collection
 
+```
+
+##### Update category
+```javascript
     PUT /api/categories/:categoryId
     Content-Type: application/json
     {
         "name": "Electronics",
         "description": "All mobile accessories"
     }
+    Usage: Update a category by its id
+```
 
+##### Other methods
+```javascript
     DELETE /api/categories/:categoryName
     Usage: Delete a category by its name
 
@@ -142,7 +175,131 @@ Filtering products by price and category
     Usage: Get all categories
 ```
 
+### Customer Management
+This API endpoint comprises of registration, login, update, deletion and altering the password of a new customer.
 
+##### Registration and Login
+```javascript
+    POST /api/customers/register
+    Content-Type: application/json
+    {
+        "firstName": "John",
+        "lastName": "Doe",
+        "email": "john@gmail.com",
+        "password": "<password>"
+    }
+    Usage: Signs up a new customer
+
+    POST /api/customers/login
+    Content-Type: application/json
+    {
+        "email": "john@gmail.com",
+        "password": "<password>"
+    }
+    Usage: Login a customer
+```
+
+##### Updating customer details
+```javascript
+    PUT /api/customers/update
+    Authorization <customer-email>
+    Content-Type: application/json
+    {
+        "firstName": "John",
+        "lastName": "Donut",
+    }
+    Usage: Update customer info
+
+    PATCH /api/customers/change-password
+    Authorization: <customer-email>
+    Content-Type: application/json
+    {
+        "password": "<new-password>"
+    }
+    Usage: Change customer password
+```
+
+##### Other methods
+```javascript
+    DELETE /api/customers/delete-account
+    Authorization <customer-email>
+    Usage: Delete a customer account
+
+    GET /api/customers/get-account
+    Authorization <customer-email>
+    Usage: Get customer account details
+
+    GET /api/customers/get-customers
+    Usage: Get all customers
+```
+
+### Order Management
+This API comprises of endpoints related to creation, update and delete of orders.
+Orders document can controlled and altered only by a valid customer
+
+##### Creating new orders
+```javascript
+    POST /api/orders/new
+    Content-Type: application/json
+    Authorization: <customer-email>
+    {
+        customerInfo: <customer-email>,
+        products: [
+            {
+                productId: "<product-id>",
+                quantity: 2
+            }
+        ]
+    }
+    Usage: Create a new order by adding products assigned by the customer
+```
+
+##### Updating orders
+```javascript
+    PATCH /api/orders/:orderId/product/add
+    Content-Type: application/json
+    Authorization : <customer-email>
+    {
+        productId: "<product-id>",
+        quantity: 1
+    }
+    Usage: Add a product to an existing order
+
+    PATCH /api/orders/:orderId/product/add
+    Content-Type: application/json
+    Authorization : <customer-email>
+    {
+        productId: "<product-id>",
+        quantity: 1
+    }
+    Usage: Delete a product from an existing order
+```
+
+##### Changing order status
+```javascript
+    PATCH /api/orders/:orderId/complete
+    Authorization <customer-email>
+    Usage: Changes the status of an order to "completed"
+
+    PATCH /api/orders/:orderId/cancel
+    Authorization <customer-email>
+    Usage: Changes the status of an order to "cancelled"
+```
+
+##### Other methods
+```javascript
+    DELETE /api/orders/:orderId
+    Authorization: <customer-email>
+    Usage: Delete an order by its id
+
+    GET /api/orders/:orderId
+    Authorization <customer-email>
+    Usage: Get an order by its id
+
+    GET /api/orders
+    Authorization <customer-email>
+    Usage: Get all orders of a customer
+```
 
 
 

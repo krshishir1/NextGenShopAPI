@@ -11,7 +11,6 @@ const router = express.Router();
         "name": "Electronics",
         "description": "All electronic items"
     }
-    
     Usage: Create a new category and stores it in catogories collection
 */
 router.post("/new", manageCategory.CREATE)
@@ -23,6 +22,7 @@ router.post("/new", manageCategory.CREATE)
         "name": "Electronics",
         "description": "All mobile accessories"
     }
+    Usage: Update a category by its id
 */
 router.put("/:categoryId", manageCategory.UPDATE)
 
