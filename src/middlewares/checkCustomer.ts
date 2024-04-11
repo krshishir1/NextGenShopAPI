@@ -3,6 +3,10 @@ import Customer from '../models/customer';
 import Order from "../models/order";
 
 
+/* 
+  This middleware checks if the customer is authorized to access the resource by checking the customer's email in the authorization header.
+*/
+
 export default async function (
     req: Request,
     res: Response,

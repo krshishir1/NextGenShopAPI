@@ -4,7 +4,6 @@ import Joi from "joi";
 
 import Product from "../models/product";
 
-// Creation of a new product
 export default async (req: Request, res: Response) => {
   try {
 
@@ -16,7 +15,6 @@ export default async (req: Request, res: Response) => {
       price: Joi.number().required(),
       category: Joi.string().required(),
       inventoryCount: Joi.number().required(),
-      sellerId: Joi.string().required(),
     });
 
     const { error } = schema.validate(req.body);

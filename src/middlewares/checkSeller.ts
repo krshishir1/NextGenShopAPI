@@ -3,6 +3,8 @@ import express, { NextFunction, Request, Response } from "express";
 import Seller from "../models/seller";
 import Product from "../models/product";
 
+/* This middleware checks if the seller is authorized to access the resource by checking the seller's ID in the authorization header. */
+
 export default async function (
   req: Request,
   res: Response,
