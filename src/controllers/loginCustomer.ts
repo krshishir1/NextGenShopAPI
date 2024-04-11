@@ -5,6 +5,10 @@ import Customer from "../models/customer"
 
 import { comparePassword } from "../utils/passwordManagement";
 
+/* 
+  This controller is responsible for logging in a customer.
+  It accepts the customer's email and password and returns the customer details if the login is successful.
+*/
 const loginCustomer = async (req: Request, res: Response) => {
   try {
     const schema = Joi.object({

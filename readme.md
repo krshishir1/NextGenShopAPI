@@ -10,6 +10,9 @@ This project aims to connect sellers with customers in an interactive and secure
 3. Express and Mongoose
 4. MongoDB Atlas (https://www.mongodb.com/atlas)
 5. Joi (for server-side schema validation)
+6. Bcrypt (for password hashing)
+7. UUID (for creating secure IDs)
+8. Nodemon (for development)
 
 ## What does the API do?
 
