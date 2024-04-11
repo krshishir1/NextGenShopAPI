@@ -6,7 +6,11 @@ import { v4 as uuidv4 } from "uuid";
 import Product from "../models/product";
 import Seller from "../models/seller";
 
-// Creation of a new product
+/*
+  This controller is responsible for creating a new product.
+  It validates the request body and creates a new product in the database.
+*/
+
 export default async (req: Request, res: Response) => {
   try {
     const schema = Joi.object({

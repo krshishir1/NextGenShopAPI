@@ -5,7 +5,10 @@ import Joi from "joi";
 import Order from "../models/order";
 import Product from "../models/product";
 
-// /api/orders/:orderId/product
+/* 
+  This controller is responsible for deleting a product from an order.
+  It accepts the order ID and the product ID and deletes the product from the order.
+*/
 const deleteProductFromOrder = async function (req: Request, res: Response) {
   try {
     const orderId = req.params.orderId;
@@ -29,6 +32,10 @@ const deleteProductFromOrder = async function (req: Request, res: Response) {
   }
 };
 
+/* 
+  This controller is responsible for adding a product to an order.
+  It accepts the order ID and the product ID and adds the product to the order.
+*/
 const addProductInOrder = async function (req: Request, res: Response) {
     try {
       const orderId = req.params.orderId;

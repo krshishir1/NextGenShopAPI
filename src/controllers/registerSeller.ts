@@ -5,6 +5,10 @@ import Seller from "../models/seller";
 
 import { v4 as uuidv4 } from "uuid";
 
+/* 
+  This controller is responsible for registering a new seller.
+  It accepts the seller's name, email and password and creates a new seller in the sellers collection.
+*/
 const registerSeller = async (req: Request, res: Response) => {
   try {
     const schema = Joi.object({

@@ -3,6 +3,10 @@ import {Request, Response} from 'express';
 import Joi from 'joi';
 import Category from '../models/category';
 
+/* 
+    This controller is responsible for creating a new category.
+    It accepts the category name and description and creates a new category in the categories collection.
+*/
 const createCategory = async function(req: Request, res: Response) {
     try {
         const schema = Joi.object({
@@ -26,6 +30,10 @@ const createCategory = async function(req: Request, res: Response) {
     }
 }
 
+/* 
+    This controller is responsible for deleting a category.
+    It accepts the category name and deletes the category from the categories collection.
+*/
 const deleteCategory = async function(req: Request, res: Response) {
     try {
 
@@ -42,6 +50,10 @@ const deleteCategory = async function(req: Request, res: Response) {
     }
 }
 
+/* 
+    This controller is responsible for updating a category.
+    It accepts the category ID, name and description and updates the category in the categories collection.
+*/
 const updateCategory = async function(req: Request, res: Response) {
     try {
 
@@ -67,6 +79,10 @@ const updateCategory = async function(req: Request, res: Response) {
     }
 }
 
+/* 
+    This controller is responsible for getting a category by its ID.
+    It accepts the category ID and returns the category details.
+*/
 const getCategoryById = async function(req: Request, res: Response) {
     try {
 
@@ -82,6 +98,9 @@ const getCategoryById = async function(req: Request, res: Response) {
     }
 }
 
+/*
+    This controller is responsible for getting all categories.
+*/
 const getAllCategories = async function(req: Request, res: Response) {
     try {
 

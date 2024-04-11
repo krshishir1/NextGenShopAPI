@@ -5,6 +5,10 @@ import Seller from "../models/seller"
 
 import { comparePassword } from "../utils/passwordManagement";
 
+/* 
+  This controller is responsible for logging in a seller.
+  It accepts the seller's email and password and returns the seller details if the login is successful.
+*/
 const loginSeller = async (req: Request, res: Response) => {
   try {
     const schema = Joi.object({

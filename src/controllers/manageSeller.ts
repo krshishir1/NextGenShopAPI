@@ -5,7 +5,10 @@ import Joi from "joi";
 import Seller from "../models/seller";
 import { hashPassword } from "../utils/passwordManagement";
 
-// Creation of a new product
+/* 
+  This controller is responsible for updating a seller's information.
+  It accepts the seller's id, name and email and updates the seller's information in the sellers collection.
+*/
 const updateSellerInfo = async function (req: Request, res: Response) {
   try {
     const sellerId = req.headers.authorization;
@@ -33,6 +36,10 @@ const updateSellerInfo = async function (req: Request, res: Response) {
   }
 };
 
+/* 
+  This controller is responsible for changing a seller's password.
+  It accepts the seller's new password and updates the seller's password in the sellers collection.
+*/
 const changePassword = async function (req: Request, res: Response) {
   try {
     const sellerId = req.headers.authorization;
@@ -59,7 +66,10 @@ const changePassword = async function (req: Request, res: Response) {
   }
 };
 
-// Get customer info
+/* 
+  This controller is responsible for getting a seller's information.
+  It accepts the seller's id and returns the seller's information.
+*/
 const getSellerInfo = async function (req: Request, res: Response) {
   try {
     const sellerId = req.headers.authorization;
@@ -72,6 +82,9 @@ const getSellerInfo = async function (req: Request, res: Response) {
   }
 };
 
+/* 
+  This controller is responsible for getting all sellers.
+*/
 const getSellers = async function (req: Request, res: Response) {
   try {
     const sellers = await Seller.find().exec();
@@ -82,6 +95,10 @@ const getSellers = async function (req: Request, res: Response) {
   }
 };
 
+/* 
+  This controller is responsible for deleting a seller's account.
+  It accepts the seller's id and deletes the seller's account from the sellers collection.
+*/
 const deleteAccount = async function (req: Request, res: Response) {
   try {
     const sellerId = req.headers.authorization;

@@ -4,6 +4,11 @@ import Joi from "joi";
 
 import Product from "../models/product";
 
+/* 
+  This controller is responsible for updating a product.
+  It accepts the product ID and the updated product details and updates the product.
+  Only sellers can update products.
+*/
 export default async (req: Request, res: Response) => {
   try {
 

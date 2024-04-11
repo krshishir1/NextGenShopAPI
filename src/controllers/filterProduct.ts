@@ -4,8 +4,10 @@ import Joi from "joi";
 
 import Product from "../models/product";
 
-// /api/products?price=
-
+/* 
+    This controller is responsible for filtering products by price.
+    It accepts minPrice and maxPrice as query parameters and returns products within the specified price range.
+*/
 const filterProductsByPrice = async function (req: Request, res: Response) {
   try {
     const { minPrice, maxPrice } = req.query;
@@ -33,6 +35,10 @@ const filterProductsByPrice = async function (req: Request, res: Response) {
   }
 };
 
+/* 
+    This controller is responsible for filtering products by category.
+    It accepts a category as a query parameter and returns products belonging to that category.
+*/
 const filterProductsByCategory = async function (req: Request, res: Response) {
   try {
     let { category } = req.query;

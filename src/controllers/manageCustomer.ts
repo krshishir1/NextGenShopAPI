@@ -4,9 +4,12 @@ import Joi from "joi";
 
 import Customer from "../models/customer";
 import { hashPassword } from "../utils/passwordManagement";
-import { DEFAULT_CIPHERS } from "tls";
 
-// Creation of a new product
+
+/* 
+  This controller is responsible for updating a customer's information.
+  It accepts the customer's first name and last name and updates the customer's information in the customers collection.
+*/
 const updateCustomerInfo = async function (req: Request, res: Response) {
   try {
     const customerEmail = req.headers.authorization;
@@ -34,6 +37,10 @@ const updateCustomerInfo = async function (req: Request, res: Response) {
   }
 };
 
+/*
+  This controller is responsible for changing a customer's password.
+  It accepts the customer's new password and updates the customer's password in the customers collection.
+*/
 const changePassword = async function (req: Request, res: Response) {
   try {
     const customerEmail = req.headers.authorization;
@@ -60,7 +67,12 @@ const changePassword = async function (req: Request, res: Response) {
   }
 };
 
-// Get customer info
+
+
+/* 
+  This controller is responsible for getting a customer's information.
+  It accepts the customer's email and returns the customer's information.
+*/
 const getCustomerInfo = async function (req: Request, res: Response) {
   try {
     const customerEmail = req.headers.authorization;
@@ -73,6 +85,9 @@ const getCustomerInfo = async function (req: Request, res: Response) {
   }
 };
 
+/* 
+  This controller is responsible for getting all customers.
+*/
 const getCustomers = async function (req: Request, res: Response) {
   try {
     const customers = await Customer.find().exec();
@@ -83,6 +98,10 @@ const getCustomers = async function (req: Request, res: Response) {
   }
 };
 
+/* 
+  This controller is responsible for deleting a customer's account.
+  It accepts the customer's email and deletes the customer's account from the customers collection.
+*/
 const deleteAccount = async function (req: Request, res: Response) {
   try {
     const customerEmail = req.headers.authorization;

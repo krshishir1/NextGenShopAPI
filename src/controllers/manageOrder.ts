@@ -2,7 +2,10 @@ import express, { Request, Response } from "express";
 
 import Order from "../models/order";
 
-
+/* 
+  This controller is responsible for cancelling an order.
+  It updates the order status to "cancelled".
+*/
 const cancelOrder = async function (req: Request, res: Response) {
   try {
     const orderId = req.params.orderId;
@@ -17,6 +20,10 @@ const cancelOrder = async function (req: Request, res: Response) {
   }
 };
 
+/* 
+  This controller is responsible for deleting an order.
+  It accepts the order ID and deletes the order from the orders collection.
+*/
 const deleteOrder = async function (req: Request, res: Response) {
   try {
     const orderId = req.params.orderId;
@@ -28,6 +35,10 @@ const deleteOrder = async function (req: Request, res: Response) {
   }
 };
 
+/* 
+  This controller is responsible for getting an order.
+  It accepts the order ID and returns the order.
+*/
 const getOrder = async function (req: Request, res: Response) {
     try {
       const orderId = req.params.orderId;
@@ -39,6 +50,9 @@ const getOrder = async function (req: Request, res: Response) {
     }
   };
 
+/*
+  This controller is responsible for getting all orders.
+*/
 const getAllOrders = async function (req: Request, res: Response) {
   try {
     const customerInfo = req.headers.authorization;

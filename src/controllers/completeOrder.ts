@@ -7,7 +7,11 @@ import Order from "../models/order";
 import Product from "../models/product";
 import Customer from "../models/customer";
 
-// Creation of new order that includes a list of products
+/* 
+  This controller is responsible for completing an order.
+  It updates the order status to "completed" and updates the inventory count of the products in the order.
+*/
+
 export default async (req: Request, res: Response) => {
   try {
     const orderId = req.params.orderId;

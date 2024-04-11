@@ -7,7 +7,11 @@ import Order from "../models/order";
 import Product from "../models/product";
 import Customer from "../models/customer";
 
-// Creation of new order that includes a list of products
+/* 
+  This controller is responsible for creating a new order.
+  It accepts the products in the order, the customer's email, and creates a new order in the orders collection.
+  Only registered customers can create an order.
+*/
 export default async (req: Request, res: Response) => {
   try {
     const productOrderSchema = Joi.object({
