@@ -6,6 +6,7 @@ import customerRouter from "./routes/customers";
 import productRouter from "./routes/products";
 import orderRouter from "./routes/orders"
 import sellerRouter from "./routes/sellers";
+import categoryRouter from "./routes/categories";
 
 const app: Express = express();
 const port = process.env.PORT || 3000;
@@ -20,6 +21,7 @@ app.use("/auth/customers", customerRouter);
 app.use("/auth/sellers", sellerRouter);
 app.use("/api/products", productRouter)
 app.use("/api/orders", orderRouter)
+app.use("/api/categories", categoryRouter)
 
 mongoose
   .connect(process.env.MONGODB_URI as string)

@@ -115,6 +115,6 @@ export default {
   UPDATE_INFO: updateSellerInfo,
   CHANGE_PASSWORD: changePassword,
   GET_INFO: getSellerInfo,
-  GET_CUSTOMERS: getSellers,
+  GET_SELLERS: getSellers,
   DELETE_ACCOUNT: deleteAccount
 };

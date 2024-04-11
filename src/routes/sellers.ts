@@ -68,9 +68,9 @@ router.put("/update", checkSeller, manageSeller.UPDATE_INFO);
 router.patch("/change-password", checkSeller, manageSeller.CHANGE_PASSWORD);
 
 /*
-    GET /api/sellers/get-customers
-    Usage: Get all customers
+    GET /api/sellers/get-sellers
+    Usage: Get all sellers
 */
-router.get("/get-customers", manageSeller.GET_CUSTOMERS);
+router.get("/get-sellers", manageSeller.GET_SELLERS);
 
 export default router;

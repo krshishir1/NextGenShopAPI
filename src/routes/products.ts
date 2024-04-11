@@ -37,6 +37,7 @@ router.post("/new", checkSeller, createProduct)
         "description": "A new iPhone 12",
         "inventoryCount": 95
     }
+    Usage: Update a product by its id
 */
 router.put("/:productId", checkSeller, updateProduct)
 
